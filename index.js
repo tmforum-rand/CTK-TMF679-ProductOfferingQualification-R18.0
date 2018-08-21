@@ -4,6 +4,7 @@ var DefaultURL = "https://paneon.no:8080/tmf-api/productOfferingQualificationMan
 var schema;
 var hostname;
 var port;
+var APIRelativeAddress;
 var statusCode;
 const exampleEndPoint = "/productOfferingQualification";
 const rl = readline.createInterface({
@@ -13,30 +14,19 @@ const rl = readline.createInterface({
 
 console.log("Welcome to the Conformance Test Kit for TMF679-ProductOfferingQualification\n");
 getURL();
-breakDownURL(DefaultURL);
 
-function validadeHost(triedURL){
-    if (!triedURL.includes(":") || !triedURL.includes("//")){
-        console.log("\n_______________________________________\nERROR:");
-        console.log("Expect URL to include : before port and // after http or https")
-        console.log("_______________________________________\n");
-        return false;
-    }
-    
-    if (triedURL.substr(0,4) !== "http"){
-        console.log("\n_______________________________________\nERROR:");
-        console.log("URL Should start with http or https");
-        console.log("_______________________________________\n");
-        return false;
-    }
-    var indexOfColon = triedURL.indexOf(":");
-    if (!isNumeric(triedURL.substr(indexOfColon+1,indexOfColon+2))){
-        console.log("\n_______________________________________\nERROR:");
-        console.log(triedURL.substring((triedURL.indexOf(":")+1),1));
-        console.log("URL should include Port number after :");
-        console.log("_______________________________________\n");
-        return false;
-    }
+
+
+
+function isURLValid(triedURL){
+    //Regex is a Modified version of: https://gist.github.com/dperini/729294 that is published under MIT license
+    //var regexQuery = "^(?:(?:http?):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$";
+    //var url = new RegExp(regexQuery,"i");
+    //if (!url.test(triedURL)){
+    //    console.log("ERROR: Invalid URL");
+    //    return false;
+    //}
+
     var options = {
         uri: triedURL + exampleEndPoint,
         
@@ -50,7 +40,8 @@ function validadeHost(triedURL){
         statusCode = jsonString.statusCode;
         if (statusCode == 200){
             console.log("API Found on: " + triedURL + exampleEndPoint);
-            return true;
+            breakDownURL(triedURL);
+            
         }
         else {
             console.log("\n_______________________________________\nERROR:");
@@ -74,28 +65,37 @@ function isNumeric(num){
 }
 
 function breakDownURL(URL){
+    if (URL.includes("https://")){
+        schema = "https";
+    }
+    if (URL.includes("http://")){
+        schema = "http";
+    }
+    var hostNameStart = URL.indexOf("//")+2;
+    var hostNameEnd = URL.lastIndexOf(":");
+    var hostNameLenght = hostNameEnd - hostNameStart;
+    hostname = URL.substr(hostNameStart,hostNameLenght);
+    
+    var portStart = URL.lastIndexOf(":")+1;
+    var portAndEndPoint = URL.substr(portStart);
+    port = portAndEndPoint.substr(0,portAndEndPoint.indexOf("/"));
+    APIRelativeAddress = portAndEndPoint.substr(portAndEndPoint.indexOf("/"));
+    console.log(schema+"://"+hostname+":"+port+APIRelativeAddress);
+    
+    
     
 }
 
 function getURL(){
-    var hostValid = false;
-    rl.question('What is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\nLeave blank for default\n', (answer) => {
-    if (answer === ""){
-        hostValid = true;
-        return rl.close(); 
-    }
-    else {
-        hostValid = validadeHost(answer);
-        if (hostValid){
-            DefaultURL = answer;
-            return rl.close();
-        }
-        else{
-            getURL();
-        }
-    }
-
     
+    rl.question('What is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n', (answer) => {
+    DefaultURL = answer;
+    rl.close();
+    isURLValid(answer);    
     });
+
+}
+
+function exportEnvironment(){
 
 }
