@@ -8,8 +8,9 @@ Node.js and NPM can be downloaded and installed from:
 Once Node.js and npm are installed download and unzip the TMF679-ProductOfferingQualification ZIP file within your test directory.
 
 You should see the following files between many others :
-Windows-RUNCTK.ps1
-Linux-RUNCTK.sh
+
+>Windows-RUNCTK.ps1
+>Linux-RUNCTK.sh
 
 ## 1.
 ### For Windows
