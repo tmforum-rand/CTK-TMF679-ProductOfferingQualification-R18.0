@@ -80,7 +80,7 @@ function breakDownURL(URL){
     var portAndEndPoint = URL.substr(portStart);
     port = portAndEndPoint.substr(0,portAndEndPoint.indexOf("/"));
     APIRelativeAddress = portAndEndPoint.substr(portAndEndPoint.indexOf("/"));
-    console.log(schema+"://"+hostname+":"+port+APIRelativeAddress);
+    //console.log(schema+"://"+hostname+":"+port+APIRelativeAddress);
     
     
     
@@ -97,5 +97,17 @@ function getURL(){
 }
 
 function exportEnvironment(){
+
+    var fs = require('fs');
+    var outputDir = 'output';
+    var inputDir = 'input';
+
+    if (!fs.existsSync(outputDir)){
+        fs.mkdirSync(outputDir);
+    }
+    if (!fs.existsSync(inputDir)){
+        throw "No input folder found, please redownload from git and follow instructions";
+    }
+
 
 }
