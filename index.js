@@ -42,6 +42,7 @@ function isURLValid(triedURL){
             console.log("API Found on: " + triedURL + exampleEndPoint);
             breakDownURL(triedURL);
             exportEnvironment();
+            runNewman();
         }
         else {
             console.log("\n_______________________________________\nERROR:");
@@ -51,7 +52,7 @@ function isURLValid(triedURL){
         }
     }).catch(function (err) {
         console.log("\n_______________________________________\nERROR:");
-        console.log(err + " while getting + "+ triedURL);
+        console.log(err + " whileprocessing "+ triedURL + "\n" + err.stack);
         console.log("_______________________________________\n");
     });
     
@@ -100,14 +101,59 @@ function getURL(){
 function exportEnvironment(){
 
     var fs = require('fs');
-    var environmentFile = "/TMForumR18.0.postman_environment.json";
+    var environmentFile = "TMForumR18.0.postman_environment.json";    
+    var content = fs.readFileSync(environmentFile, "utf8");
+    var envJson = JSON.parse(content);
+    envJson.name = "TMForumR18.0";
+    envJson.values.forEach(element => {
+        if (element.key == "schema"){
+            element.value = schema;
+        }
+        if (element.key == "host"){
+            element.value = hostname;
+        }
+        if (element.key == "port"){
+            element.value = port;
+        } 
+        if (element.key == "ProductOfferingQualificationAPI"){
+            element.value = "{{schema}}://{{host}}:{{port}}"+APIRelativeAddress;
+        }
+    });
+    jsonData = JSON.stringify(envJson);
+    fs.writeFileSync("./TMFENV.json", jsonData, function (err) {
+        if (err) {
+            throw "Error while writing Environment File:" + err;
+        }   
+        
+    }); 
 
-    if (!fs.existsSync(outputDir)){
-        fs.mkdirSync(outputDir);
-    }
-    if (!fs.existsSync(inputDir)){
-        throw "No input folder found, please redownload from git and follow instructions";
-    }
-    var content = fs.readFileSync(environmentFile);
-    console.log(content);
+
+}
+
+function runNewman(){
+    var newman = require('newman');
+
+    newman.run({
+        collection: require('./CTK-TMF679-ProductOfferingQualification.postman_collection.json'),
+        environment: require('./TMFENV.json'),
+        insecure: true,
+        reporters: 'html',
+        reporter: {
+            html: {
+                export: './htmlResults.html', // If not specified, the file will be written to `newman/` in the current working directory.
+                //template: './customTemplate.hbs' // optional, this will be picked up relative to the directory that Newman runs in.
+            }
+        }
+    }).on('start', function (err, args) {
+        console.log('running a collection...');
+    }).on('done', function (err, summary) {
+        if (err || summary.error) {
+            console.error('collection run encountered an error.');
+        }
+        else {
+            console.log('collection run completed.:');
+            console.log("summary environment :");
+            console.log(summary.environment);
+        }
+    });
 }
