@@ -9,17 +9,17 @@ You should see the following files between many others :
 Windows-RUNCTK.ps1
 Linux-RUNCTK.sh
 
-##1.
-###For Windows
+## 1.
+### For Windows
 For Windows you need to right click Windows-RUNCTK.ps1 and select run with PowerShell, press Y and Enter, wait for the dependencies to be installed go to Step 2.
-###For Linux
+### For Linux
 For Linux you need to give executable permission for the Linux-RUNCTK.sh file, you can do that by opening a terminal and typing:
 >chmod+x ./Linux-RUNCTK.sh
 and
 >./Linux-RUNCTK.sh
 Wait for NPM to install the dependencies and go to step 2.
 
-##2.
+## 2.
 Finally enter the URL for the base of your API, for example if you can get a resource on:
 >https://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification
 
