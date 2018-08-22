@@ -4,4 +4,5 @@ Write-Host "NodeJS, NMP and Newman installed."
 Write-Host
 
 
-npm install; npm start
+npm install
+npm start
