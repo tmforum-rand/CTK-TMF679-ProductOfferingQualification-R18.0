@@ -41,7 +41,7 @@ function isURLValid(triedURL){
         if (statusCode == 200){
             console.log("API Found on: " + triedURL + exampleEndPoint);
             breakDownURL(triedURL);
-            
+            exportEnvironment();
         }
         else {
             console.log("\n_______________________________________\nERROR:");
@@ -91,7 +91,8 @@ function getURL(){
     rl.question('What is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n', (answer) => {
     DefaultURL = answer;
     rl.close();
-    isURLValid(answer);    
+    isURLValid(answer);
+    
     });
 
 }
@@ -99,8 +100,7 @@ function getURL(){
 function exportEnvironment(){
 
     var fs = require('fs');
-    var outputDir = 'output';
-    var inputDir = 'input';
+    var environmentFile = "/TMForumR18.0.postman_environment.json";
 
     if (!fs.existsSync(outputDir)){
         fs.mkdirSync(outputDir);
@@ -108,6 +108,6 @@ function exportEnvironment(){
     if (!fs.existsSync(inputDir)){
         throw "No input folder found, please redownload from git and follow instructions";
     }
-
-
+    var content = fs.readFileSync(environmentFile);
+    console.log(content);
 }
