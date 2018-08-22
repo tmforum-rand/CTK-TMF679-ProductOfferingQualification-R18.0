@@ -8,4 +8,4 @@ echo "NodeJS, NMP and Newman installed."
 echo
 
 
-newman run CTK-TMF679-ProductOfferingQualification.postman_collection.json -e TMForumR2018.0-PaneOn.postman_environment.json --reporters html json --reporter-html-export TMF679-ProductOfferingQualification-report.html --reporter-json-export TMF679-ProductOfferingQualification-report.json
+npm install && npm start

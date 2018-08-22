@@ -12,7 +12,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-console.log("Welcome to the Conformance Test Kit for TMF679-ProductOfferingQualification\n");
+console.log("////////////////////////////////////////////////////////////////////////\nWelcome to the Conformance Test Kit for TMF679-ProductOfferingQualification\n");
 getURL();
 
 
@@ -89,7 +89,7 @@ function breakDownURL(URL){
 
 function getURL(){
     
-    rl.question('What is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n', (answer) => {
+    rl.question('////////////////////////////////////////////////////////////////////////\nWhat is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n', (answer) => {
     DefaultURL = answer;
     rl.close();
     isURLValid(answer);
@@ -152,8 +152,6 @@ function runNewman(){
         }
         else {
             console.log('collection run completed.:');
-            console.log("summary environment :");
-            console.log(summary.environment);
         }
     });
 }
