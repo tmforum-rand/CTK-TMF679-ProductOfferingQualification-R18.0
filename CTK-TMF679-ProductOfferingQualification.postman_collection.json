@@ -7,17 +7,17 @@
 	},
 	"item": [
 		{
-			"_postman_id": "2831eb4a-0aba-4782-8585-e60c495b9589",
+			"_postman_id": "aaa4aae3-800d-4f88-af67-edc478173d59",
 			"name": "TC_ProductOfferingQualification_N1 – Create new ProductOfferingQualification with minimum required information",
 			"item": [
 				{
-					"_postman_id": "01fa4dcf-baed-4765-9f22-032535462bd8",
+					"_postman_id": "1797bf05-b77a-4b07-b565-39a6bf5887e3",
 					"name": "Create a ProductOffer",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "66f84ce7-6846-4c2e-b62a-f8dd7702ff2b",
+								"id": "09d28bc1-cfc6-43c8-84bd-2567002c4a32",
 								"type": "text/javascript",
 								"exec": [
 									"// See: https://www.getpostman.com/docs/v6/postman/scripts/postman_sandbox_api_reference",
@@ -27,7 +27,7 @@
 									"pm.test('Content-Type is present', function() { pm.response.to.have.header('Content-Type') });",
 									"pm.test('Content-Type is application/json', function() { pm.response.headers.has('application/json') });",
 									"//Response Code 201-Created",
-									"pm.test(\"Status code is 201 (Conformance Profile page 16)\", function () { pm.response.to.have.status(201); });",
+									"pm.test(\"Status code is 201\", function () { pm.response.to.have.status(201); });",
 									"",
 									"",
 									"",
@@ -112,7 +112,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"description\": \"qualification for productOffering\",\n\t\"expectedQualificationDate\": \"2017-09-21T12:00:00Z\",\n\t\"provideAlternative\": true,\n\t\"provideOnlyAvailable\": false,\n\t\"provideUnavailabilityReason\": true,\n\t\"productOfferingQualificationItem\": [\n\t\t{\n\t\t\"id\": \"1\",\n\t\t\"expectedActivationDate\": \"2017-10-04T12:00:00Z\",\n\t\t\"note\": [\n\t\t\t{\n\t\t\t\"date\": \"2017-10-02T00:00\",\n\t\t\t\"author\": \"Dr. Jeckill\",\n\t\t\t\"text\": \"This is quite important\"\n\t\t\t}\n\t\t],\n\t\t\"productOffering\": {\n\t\t\"id\": \"7431\",\n\t\t\"href\": \" https://host:port/productOffering/productOffering/7431 \",\n\t\t\"name\": \"Virtual Storage Medium\"\n\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"2\",\n\t\t\t\"expectedActivationDate\": \"2017-10-11T12:00:00Z\",\n\t\t\t\"productOffering\": {\n\t\t\t\t\"id\": \"66\",\n\t\t\t\t\"href\": \" https://host:port/productOffering/productOffering/66 \",\n\t\t\t\t\"name\": \"Mobile A+ Tariff Plan\"\n\t\t\t}\n\t\t}\n\t],\n\t\"relatedParty\": [\n\t\t{\n\t\t\"id\": \"14\",\n\t\t\"href\": \" https://host:port/partyManagement/individual/14 \",\n\t\t\"role\": \"customer\",\n\t\t\"name\": \"Jean Pontus\"\n\t\t}\n\t],\n\t\"channel\": {\n\t\t\"id\": \"1\",\n\t\t\"href\": \" https://host:port/productCatalogManagement/channel/1 \",\n\t\t\"name\": \"Online Channel\"\n\t}\n}"
+							"raw": "{\n\t\"description\": \"qualification for productOffering\",\n\t\"expectedQualificationDate\": \"2017-09-21T12:00:00Z\",\n\t\"provideAlternative\": true,\n\t\"provideOnlyAvailable\": false,\n\t\"provideUnavailabilityReason\": true,\n\t\"productOfferingQualificationItem\": [\n\t\t{\n\t\t\"id\": \"1\",\n\t\t\"expectedActivationDate\": \"2017-10-04T12:00:00Z\",\n\t\t\"productOffering\": {\n\t\t\"id\": \"7431\",\n\t\t\"href\": \" https://host:port/productOffering/productOffering/7431 \",\n\t\t\"name\": \"Virtual Storage Medium\"\n\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"2\",\n\t\t\t\"expectedActivationDate\": \"2017-10-11T12:00:00Z\",\n\t\t\t\"productOffering\": {\n\t\t\t\t\"id\": \"66\",\n\t\t\t\t\"href\": \" https://host:port/productOffering/productOffering/66 \",\n\t\t\t\t\"name\": \"Mobile A+ Tariff Plan\"\n\t\t\t}\n\t\t}\n\t],\n\t\"relatedParty\": [\n\t\t{\n\t\t\"id\": \"14\",\n\t\t\"href\": \" https://host:port/partyManagement/individual/14 \",\n\t\t\"role\": \"customer\",\n\t\t\"name\": \"Jean Pontus\"\n\t\t}\n\t],\n\t\"channel\": {\n\t\t\"id\": \"1\",\n\t\t\"href\": \" https://host:port/productCatalogManagement/channel/1 \",\n\t\t\"name\": \"Online Channel\"\n\t}\n}"
 						},
 						"url": {
 							"raw": "{{ProductOfferingQualificationAPI}}/productOfferingQualification",
@@ -127,7 +127,7 @@
 					"response": []
 				},
 				{
-					"_postman_id": "6d0708e8-cdef-4d84-9d12-c9c58d490092",
+					"_postman_id": "f46a6bfa-9d52-47e1-959a-ce1f22272c83",
 					"name": "Get ID1",
 					"event": [
 						{
@@ -310,11 +310,11 @@
 			]
 		},
 		{
-			"_postman_id": "77de68cc-1d5d-4659-9f15-01a63f8870e6",
+			"_postman_id": "fd2b44ae-9745-4d46-894e-e50ee8df99b5",
 			"name": "TC_ProductOfferingQualification_N2 – Create new ProductOfferingQualification with minimum set of parameters supported by server",
 			"item": [
 				{
-					"_postman_id": "f4cf6710-8108-4667-9308-a4510d812172",
+					"_postman_id": "5acfcb9d-a098-40b1-b43c-7e609232589e",
 					"name": "Create a ProductOffer",
 					"event": [
 						{
@@ -430,7 +430,7 @@
 					"response": []
 				},
 				{
-					"_postman_id": "95c17bba-5005-44d5-9433-63ed68f79c18",
+					"_postman_id": "90b62279-367b-40d1-a0ec-4fe89d89b6d6",
 					"name": "Get ID2",
 					"event": [
 						{
@@ -613,11 +613,11 @@
 			]
 		},
 		{
-			"_postman_id": "f4380037-d83d-4d79-b8a8-8213386e20a9",
+			"_postman_id": "3fad2397-c891-494f-9eb9-16e8121f58b6",
 			"name": "TC_ProductOfferingQualification_N3 – Search for ProductOfferingQualification s with specific characteristics",
 			"item": [
 				{
-					"_postman_id": "2d065369-73e0-4532-919b-b347eb4bde15",
+					"_postman_id": "840aa5cc-98a6-4faf-a099-3e8a0cdc3fb9",
 					"name": "List all ProductOfferingQualification",
 					"event": [
 						{
@@ -920,7 +920,7 @@
 					"response": []
 				},
 				{
-					"_postman_id": "5f40fb8a-2b17-4020-a9c0-5538dd6ed510",
+					"_postman_id": "a0f67bc0-0002-46e9-a215-60dd7c45ee6c",
 					"name": "Filter by expectedQualificationDate",
 					"event": [
 						{
@@ -1138,7 +1138,7 @@
 					"response": []
 				},
 				{
-					"_postman_id": "a85d4ffa-3d61-465b-9850-90c05597e6e9",
+					"_postman_id": "37d6154d-8e6c-4a9b-ad73-51f9e6113491",
 					"name": "Filter by relatedParty.id=\"14\"&relatedParty.role=\"customer\"",
 					"event": [
 						{
@@ -1346,11 +1346,11 @@
 			]
 		},
 		{
-			"_postman_id": "32ee8c04-94bf-4070-9c60-69964c51476c",
+			"_postman_id": "2be1d349-c0ae-46f2-9d37-d07ddfc8433d",
 			"name": "TC_ProductOfferingQualification_N4 – Filtered retrieval of ProductOfferingQualification",
 			"item": [
 				{
-					"_postman_id": "4bf92b6f-66ee-475d-aa56-aab84d732ef5",
+					"_postman_id": "8281aa51-2d5e-4b3e-957a-be27658b4fbe",
 					"name": "{{ProductOfferingQualificationAPI}}/productOfferingQualification/{{IDPOQ1}}?fields=id, state,productOfferingQualificationItem.state,productOfferingQualificationItem.qualificationItemResult",
 					"event": [
 						{
@@ -1543,11 +1543,11 @@
 			]
 		},
 		{
-			"_postman_id": "2ca7a30e-e719-4010-8b0d-ad979d6ff1b5",
+			"_postman_id": "0891b44e-10e3-498f-8e40-9938b35ba039",
 			"name": "TC_ProductOfferingQualification_N5 – Filtered Search and Filtered data response",
 			"item": [
 				{
-					"_postman_id": "888efd52-76da-4b1d-94f6-f9470bae3ba3",
+					"_postman_id": "93cc3574-98f2-49c7-9c31-ec2c28fd081b",
 					"name": "{{ProductOfferingQualificationAPI}}/productOfferingQualification?channel.id=\"1\"&fields=id,state",
 					"event": [
 						{
@@ -1735,11 +1735,11 @@
 			]
 		},
 		{
-			"_postman_id": "c8409d67-8af9-4042-b226-11e8a4e258d6",
+			"_postman_id": "c82f0266-4b08-4240-a661-8282cd44876d",
 			"name": "TC_ProductOfferingQualification_E1 – Unknown Trouble ProductOfferingQualification identifier",
 			"item": [
 				{
-					"_postman_id": "cfd58729-e820-4a25-9f5b-64f76b903585",
+					"_postman_id": "dab48d3a-a119-4f05-b50c-23558f0d2133",
 					"name": "Error 404",
 					"event": [
 						{
@@ -1792,11 +1792,11 @@
 			]
 		},
 		{
-			"_postman_id": "eddf3520-da44-49fb-b8d5-749bf51203db",
+			"_postman_id": "0b293c0f-57a7-44e4-ac44-90c43d1a595b",
 			"name": "TC_ProductOfferingQualification_E2 – Invalid Request – Missing mandatory parameter",
 			"item": [
 				{
-					"_postman_id": "e6d96a81-d224-4297-9a0b-6637724c4163",
+					"_postman_id": "9d623e32-3ec8-4737-8ab5-960287c0dc6f",
 					"name": "Error 400",
 					"event": [
 						{
@@ -1851,11 +1851,11 @@
 			]
 		},
 		{
-			"_postman_id": "3a677793-23be-488f-91d8-6cd18424b11f",
+			"_postman_id": "385e85d8-efae-486d-805f-a20ada8e1a21",
 			"name": "TC_ProductOfferingQualification _E3 – Invalid Request – Missing parameter mandatory in context",
 			"item": [
 				{
-					"_postman_id": "2a481659-3119-4854-a93f-036760d1f03c",
+					"_postman_id": "aba02bad-04c4-48dd-9c1b-d4d93dde1a52",
 					"name": "Error 400",
 					"event": [
 						{
