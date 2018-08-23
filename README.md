@@ -10,6 +10,7 @@ Once Node.js and npm are installed download and unzip the TMF679-ProductOffering
 You should see the following files between many others :
 
 >Windows-RUNCTK.ps1
+
 >Linux-RUNCTK.sh
 
 ## 1.
