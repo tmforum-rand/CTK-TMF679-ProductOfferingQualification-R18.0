@@ -52,7 +52,7 @@ function isURLValid(triedURL){
         }
     }).catch(function (err) {
         console.log("\n_______________________________________\nERROR:");
-        console.log(err + " whileprocessing "+ triedURL + "\n" + err.stack);
+        console.log(err + " while processing "+ triedURL + "\n" + err.stack);
         console.log("_______________________________________\n");
     });
     
@@ -89,7 +89,7 @@ function breakDownURL(URL){
 
 function getURL(){
     
-    rl.question('////////////////////////////////////////////////////////////////////////\nWhat is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n', (answer) => {
+    rl.question('////////////////////////////////////////////////////////////////////////\nWhat is your full API address omiting the endpoint? example:\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1/productOfferingQualification\nbecomes\nhttps://paneon.no:8080/tmf-api/productOfferingQualificationManagement/v1\n>', (answer) => {
     DefaultURL = answer;
     rl.close();
     isURLValid(answer);
@@ -120,7 +120,7 @@ function exportEnvironment(){
         }
     });
     jsonData = JSON.stringify(envJson);
-    fs.writeFileSync("./TMFENV.json", jsonData, function (err) {
+    fs.writeFileSync("TMFENV.json", jsonData, function (err) {
         if (err) {
             throw "Error while writing Environment File:" + err;
         }   
