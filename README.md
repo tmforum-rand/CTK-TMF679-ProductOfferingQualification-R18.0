@@ -19,7 +19,9 @@ For Windows you need to right click Windows-RUNCTK.ps1 and select run with Power
 ### For Linux
 For Linux you need to give executable permission for the Linux-RUNCTK.sh file, you can do that by opening a terminal and typing:
 >chmod +x ./Linux-RUNCTK.sh
-and
+
+and 
+
 >./Linux-RUNCTK.sh
 Wait for NPM to install the dependencies and go to step 2.
 
