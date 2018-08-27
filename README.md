@@ -23,6 +23,7 @@ For Linux you need to give executable permission for the Linux-RUNCTK.sh file, y
 and 
 
 >./Linux-RUNCTK.sh
+
 Wait for NPM to install the dependencies and go to step 2.
 
 ## 2.
