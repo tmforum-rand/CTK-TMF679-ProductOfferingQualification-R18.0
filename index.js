@@ -132,21 +132,30 @@ function runNewman(){
         collection: require('./CTK-TMF679-ProductOfferingQualification.postman_collection.json'),
         environment: require('./TMFENV.json'),
         insecure: true,
-        reporters: 'html',
+        reporters: ['html','json'],
         reporter: {
             html: {
                 export: './htmlResults.html', // If not specified, the file will be written to `newman/` in the current working directory.
                 //template: './customTemplate.hbs' // optional, this will be picked up relative to the directory that Newman runs in.
+            },
+            json: {
+                export: 'jsonResults.json'
             }
         }
     }).on('start', function (err, args) {
         console.log('running a collection...');
     }).on('done', function (err, summary) {
         if (err || summary.error) {
-            console.error('collection run encountered an error.');
+            if (err){
+                console.error('collection run encountered an error. ' + err);
+            }
+            if (summary.error){
+                console.log("Collected run completed but with errors, please check htmlResults.html for details. Your API didn't pass the Conformance Test Kit.");
+            }
+            
         }
+            
         else {
-            console.log('collection run completed.:');
-        }
+            console.log('Collection run completed without errors, you passed the Conformance Test Kit, jsonResults.json and htmlResults.html have the details and can be forwarded to TMForum.');        }
     });
 }

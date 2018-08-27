@@ -16,7 +16,7 @@ You should see the following files between many others :
 ## 1.
 ### For Windows
 For Windows you need to right click Windows-RUNCTK.ps1 and select run with PowerShell, press Y and Enter, wait for the dependencies to be installed go to Step 2.
-### For Linux
+### For Linux and Mac
 For Linux you need to give executable permission for the Linux-RUNCTK.sh file, you can do that by opening a terminal and typing:
 >chmod +x ./Linux-RUNCTK.sh
 
