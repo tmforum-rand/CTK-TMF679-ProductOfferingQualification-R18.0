@@ -120,12 +120,7 @@ function exportEnvironment(){
         }
     });
     jsonData = JSON.stringify(envJson);
-    fs.writeFileSync("TMFENV.json", jsonData, function (err) {
-        if (err) {
-            throw "Error while writing Environment File:" + err;
-        }   
-        
-    }); 
+    fs.writeFileSync("TMFENV.json", jsonData);
 
 
 }
