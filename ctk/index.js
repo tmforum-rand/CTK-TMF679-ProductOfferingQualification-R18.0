@@ -135,11 +135,11 @@ function runNewman(){
         reporters: ['html','json'],
         reporter: {
             html: {
-                export: './htmlResults.html', // If not specified, the file will be written to `newman/` in the current working directory.
+                export: '../htmlResults.html', // If not specified, the file will be written to `newman/` in the current working directory.
                 //template: './customTemplate.hbs' // optional, this will be picked up relative to the directory that Newman runs in.
             },
             json: {
-                export: 'jsonResults.json'
+                export: '../jsonResults.json'
             }
         }
     }).on('start', function (err, args) {
