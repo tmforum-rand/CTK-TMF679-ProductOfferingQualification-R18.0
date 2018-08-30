@@ -4,6 +4,6 @@ Write-Host "NodeJS and NPM installed."
 Write-Host "Installing npm dependencies..."
 Write-Host
 
-
+cd .\ctk
 npm install
 npm start

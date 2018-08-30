@@ -7,5 +7,4 @@ echo "In order to be able to run it, you need to have"
 echo "NodeJS, NMP and Newman installed."
 echo
 
-
-npm install && npm start
+cd ./ctk && npm install && npm start
