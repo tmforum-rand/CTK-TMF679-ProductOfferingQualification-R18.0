@@ -1,4 +1,4 @@
 @echo off
-dir .\ctk
+cd .\ctk
 npm install
 npm start
